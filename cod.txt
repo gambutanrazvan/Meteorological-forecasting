@@ -1,0 +1,21 @@
+n = 10;  % numarul de neuroni ai retelei
+net = feedforwardnet(n); %metoda aleasa
+trainX = [luna,an,anotimp];
+
+[net,TR] = train(net,trainX',trainY'); %antrenarea retelei propriu-zise
+
+ for i = 1:length(trainY)
+    y_model(i) = net([luna(i);an(i);anotimp(i)]); %calcularea temperaturii pe baza modelului
+ end
+ 
+ t = 1:732;
+ plot(t,[trainY,y_model]) 
+ title('Suprapunere model cu date masurate');
+ figure;
+for i=1:length(lunaX)
+ y_temperatura(i)=net([lunaX(i);anX(i);anotimpX(i)]);
+end
+
+t1 = 1:120
+plot(t1,y_temperatura)
+title('evolutia temperaturii pe urmatorii 10 ani');
